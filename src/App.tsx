@@ -104,7 +104,7 @@ const handleRestart = () => startSession(activeDeck);
           <p>Percentual de acertos: {scoreSummary.stats.percentage.toFixed(2)}%</p>
           <button onClick={scoreSummary.onRestart}>Reiniciar Sessão</button>
           
-          <button onClick={() => { setIsFinished(false); setIsAiMode(false); }} style={{ marginTop: "10px" }}>
+          <button onClick={() => { setIsFinished(false); setIsAiMode(false); }}>
             Gerar Novo Quiz com IA
           </button>
         </div>
@@ -126,15 +126,16 @@ const handleRestart = () => startSession(activeDeck);
         <p>Cole abaixo um resumo ou texto de estudo para criarmos perguntas automáticas:</p>
         
         <textarea
+          className="quiz-textarea"
           rows={6}
           value={contextText}
           onChange={(e) => setContextText(e.target.value)}
           placeholder="Ex: A Revolução Francesa foi um período de radicais transformações políticas e sociais..."
-          style={{ width: "100%", padding: "10px", marginBottom: "15px", borderRadius: "8px" }}
         />
-        <label style={{ display: "block", marginBottom: "15px" }}>
+        <label>
           Número de perguntas:{" "}
           <select
+          className="select-numeros"
             value={numQuestions}
               onChange={(e) => setNumQuestions(Number(e.target.value))}
               >
@@ -152,7 +153,7 @@ const handleRestart = () => startSession(activeDeck);
           {isLoading ? "A gerar perguntas..." : "Gerar Flashcards com IA"}
         </button>
 
-        <div style={{ marginTop: "20px" }}>
+        <div>
           <button onClick={() => { setIsAiMode(true); startSession(deck); }}>
             Ou jogar com o Deck Padrão
           </button>
